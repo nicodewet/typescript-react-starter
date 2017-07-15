@@ -4,7 +4,10 @@ A quick start guide on how to wire up TypeScript with React.
 
 Based on the [Microsoft Type Script React guide](https://github.com/Microsoft/TypeScript-React-Starter) with the following changes.
 
-* Use yarn instead of npm
+* Use yarn instead of npm.
+* Use Visual Studio Code.
+
+Keep [Migrating from npm](https://yarnpkg.com/lang/en/docs/migrating-from-npm/) handy when using yarn.
 
 ## Install create-react-app
 
@@ -29,4 +32,12 @@ Sanity check that the auto generation works.
 ```
 $ yarn start
 ```
+
+Take note of the following files and *effective conventions*:
+
+* tsconfig.js - contains Typescript-specific options for our project such as compiler options, excludes and types.
+* tslint.json - our linter, [TSLint](https://palantir.github.io/tslint/), will be driven by settings in this file.
+* package.json - naturally relevant dependencies and scripts (start, build, test, eject) that all use [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript).
+* public folder - static assets (HTML page we'll deploy to, images). index.html must be kept.
+* src folder - typescript and css code. index.tsx is our file's entry point and must be kept.
 
