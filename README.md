@@ -24,3 +24,9 @@ $ create-react-app . --scripts-version=react-scripts-ts
 
 [Here](create-react-app-README.md) is the create-react-app generated README.md file for reference, of course renamed.
 
+Sanity check that the auto generation works.
+
+```
+$ yarn start
+```
+
