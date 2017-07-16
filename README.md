@@ -41,3 +41,21 @@ Take note of the following files and *effective conventions*:
 * public folder - static assets (HTML page we'll deploy to, images). index.html must be kept.
 * src folder - typescript and css code. index.tsx is our file's entry point and must be kept.
 
+## Run and Test
+
+```
+yarn start
+```
+
+Runs the start scipt specified in package.json
+
+```
+$ yarn test
+```
+
+Runs [Jest](https://facebook.github.io/jest/), a testing utility, by filtering files with a .test.ts or .spec.ts extension. Have a quick look at the [Jest Getting Started Guide](https://facebook.github.io/jest/docs/en/getting-started.html) if you have not used it before.
+
+As with the *yarn start* command Jest will automatically run as soon as it detects changes. One way of working is to run both *yarn start* and *yarn test* concurrently in seperate terminal windows in order to both preview and test changes simultaneously.
+
+Note that your test file, namely *App.text.tsx* is in the same directory as *App.test.tsx* which is different in terms of say the [Maven Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) that Java developers may be accustomed to.
+
