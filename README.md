@@ -53,9 +53,16 @@ Runs the start scipt specified in package.json
 $ yarn test
 ```
 
-Runs [Jest](https://facebook.github.io/jest/), a testing utility, by filtering files with a .test.ts or .spec.ts extension. Have a quick look at the [Jest Getting Started Guide](https://facebook.github.io/jest/docs/en/getting-started.html) if you have not used it before.
+Runs [Jest](https://facebook.github.io/jest/), a testing utility (test runner), by filtering files with a .test.ts or .spec.ts extension. Have a quick look at the [Jest Getting Started Guide](https://facebook.github.io/jest/docs/en/getting-started.html) if you have not used it before.
 
 As with the *yarn start* command Jest will automatically run as soon as it detects changes. One way of working is to run both *yarn start* and *yarn test* concurrently in seperate terminal windows in order to both preview and test changes simultaneously.
 
-Note that your test file, namely *App.text.tsx* is in the same directory as *App.test.tsx* which is different in terms of say the [Maven Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) that Java developers may be accustomed to.
+Note that your test file, namely *App.text.tsx* is in the same directory as *App.test.tsx* which is different in terms of say the [Maven Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) that Java developers may be accustomed to. We'll leave the structure as-is for now.
+
+If you don't want to *watch* and tests and want to exit after a test run, as per the [create-react-apps docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#continuous-integration) use the CI flag which would be used on a continous integration server.
+
+```
+$ CI=true yarn test
+```
+
 
