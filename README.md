@@ -2,9 +2,10 @@
 
 A quick start guide on how to wire up TypeScript with React.
 
-Based on the [Microsoft Type Script React guide](https://github.com/Microsoft/TypeScript-React-Starter) with the following changes.
+Largely based on the [Microsoft Type Script React guide](https://github.com/Microsoft/TypeScript-React-Starter) with the following changes.
 
 * Use yarn instead of npm.
+* References to upstream documentation (in particular TypeScript and React documentation) where appropriate.
 * Use Visual Studio Code.
 
 Keep [Migrating from npm](https://yarnpkg.com/lang/en/docs/migrating-from-npm/) handy when using yarn.
@@ -59,10 +60,78 @@ As with the *yarn start* command Jest will automatically run as soon as it detec
 
 Note that your test file, namely *App.text.tsx* is in the same directory as *App.test.tsx* which is different in terms of say the [Maven Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) that Java developers may be accustomed to. We'll leave the structure as-is for now.
 
-If you don't want to *watch* and tests and want to exit after a test run, as per the [create-react-apps docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#continuous-integration) use the CI flag which would be used on a continous integration server.
+If you don't want to *watch* tests and want to exit after a test run, as per the [create-react-apps docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#continuous-integration) use the CI flag which would be used on a continous integration server as naturally one would want CI jobs to
+report a result.
 
 ```
 $ CI=true yarn test
 ```
+
+## Creating a production build
+
+*yarn start* does not produce an optimized build in the sense that for example the code sent to users is not as fast and small as possible. Production builds
+would perform optimizations such as minification on JS and CSS. To produce a production build and artifacts in build/static/js and build/static/css respectively run the following command.
+
+```
+$ yarn build
+```
+
+# Creating a Component
+
+We'll create a *Hello* component that takes *name* and *enthusiasmLevel* parameters. 
+
+We'll create *Hello.tsx* in the *src/components* directory. Remember that *.tsx* indicates that the file contains [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html) syntax which is an embeddable XML-like syntax. You should
+study the [JSX page](https://www.typescriptlang.org/docs/handbook/jsx.html)
+
+```javascript
+// src/components/Hello.tsx
+
+import * as React from 'react';
+
+export interface Props {
+  name: string;
+  enthusiasmLevel?: number;
+}
+
+function Hello({ name, enthusiasmLevel = 1 }: Props) {
+  if (enthusiasmLevel <= 0) {
+    throw new Error('You could be a little more enthusiastic. :D');
+  }
+
+  return (
+    <div className="hello">
+      <div className="greeting">
+        Hello {name + getExclamationMarks(enthusiasmLevel)}
+      </div>
+    </div>
+  );
+}
+
+export default Hello;
+
+// helpers
+
+function getExclamationMarks(numChars: number) {
+  return Array(numChars + 1).join('!');
+}
+```
+
+Although the *Hello.tsx* code may be conceptually intuitive, if you are new to both React and TypeScript here are some key references
+to help you understand the code.
+
+* The [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) and in particular [Interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) and [Modules](https://www.typescriptlang.org/docs/handbook/modules.html)
+* The [React.Component](https://facebook.github.io/react/docs/react-component.html) page and in particular the [Components and Props](https://facebook.github.io/react/docs/components-and-props.html) page which introduced the notion of *Functional and Class Components* since we have a **stateless functional component (SFC)** in *Hello.tsx*.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
